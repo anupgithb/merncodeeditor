@@ -9,6 +9,9 @@ dotenv.config();
 import router from './routes/route.js';
 import Connection from './database/db.js';
 
+app.set('trust proxy', 1);
+
+
 app.use(cors({
   origin:['http://localhost:3000','https://code-editor-client-ufa9.onrender.com'], 
    credentials:true,            //access-control-allow-credentials:true

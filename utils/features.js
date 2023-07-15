@@ -11,6 +11,9 @@ import User from "../models/user-schema.js";
             path: '/',
             httpOnly: true,
             maxAge: set ? 24*60*60*1000 : 0,
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+            secure: process.env.NODE_ENV === 'production',
+            domain: process.env.NODE_ENV === 'production' ? '.onrender.com' : undefined
           }); 
         res.setHeader('Set-Cookie',serializedCookie );
         const setCookieHeader = res.getHeader('Set-Cookie');
